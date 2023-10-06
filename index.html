@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA code generator</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Outfit&family=Poppins:wght@500;600;700&family=Roboto:wght@400;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+
+    <!-- GENERIC -->
+    <link rel="stylesheet" href="styles/reset.css"> 
+    <link rel="stylesheet" href="styles/box-sizing.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/colors.css">
+
+</head>
+
+<body>
+    <div class="bg-container">
+        <img class="bg-image" src="/assets/bg-illustration.svg">
+    </div>
+    <div class="container">
+        <div class="logo"></div>
+        <div class="form">
+            <input onkeydown="checkEnter(event)" id="inputField" type="url" maxlength="50" placeholder="Enter an url">
+            <button id="nextButton" onclick="redirectToSecondPage()" type="button">QR code</button>
+        </div>
+    </div>
+    
+    <script>
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+            // Se a tecla pressionada for "Enter", acione o clique do botão
+            document.getElementById("nextButton").click();
+            }
+        }
+        function redirectToSecondPage() {
+          const inputValue = document.getElementById('inputField').value;
+          let qrValue = inputValue;
+          if(!qrValue){
+            console.log("Deu merda padrinho! Escreva alguma coisa")
+            return
+          }
+          window.location.href = `qrcode.html?data=${inputValue}`;
+        }
+      </script>
+
+</body>
+
+</html>
